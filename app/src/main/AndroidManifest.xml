@@ -24,7 +24,9 @@
         <activity
             android:name=".DrinkCategoryAcrivity"
             android:label="@string/title_activity_drink_category" />
-        <activity android:name=".DrinkActivity"></activity>
+        <activity android:name=".DrinkActivity" />
+        <activity android:name=".FoodCategoryAcrivity" />
+        <activity android:name=".FoodActivity"></activity>
     </application>
 
 </manifest>

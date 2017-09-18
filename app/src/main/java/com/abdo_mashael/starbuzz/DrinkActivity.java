@@ -25,7 +25,7 @@ public class DrinkActivity extends Activity {
         setContentView(R.layout.activity_drink);
 
         //Get the drink from the intent
-        int drinkNo=(Integer)getIntent().getExtras().get(EXTRA_DRINKNO);
+        int drinkNo = (Integer) getIntent().getExtras().get(EXTRA_DRINKNO);
         /*Drink drink = Drink.drinks[drinkNo];
 
         //Populate the drink image
@@ -45,47 +45,48 @@ public class DrinkActivity extends Activity {
         try {
             SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(this);
             SQLiteDatabase db = starbuzzDatabaseHelper.getWritableDatabase();
-            Cursor cursor =db.query("DRINK",
-                    new String[]{"NAME","DESCRIPTION","IMAGE_RESOURCE_ID","FAVORITE"},
+            Cursor cursor = db.query("DRINK",
+                    new String[]{"NAME", "DESCRIPTION", "IMAGE_RESOURCE_ID", "FAVORITE"},
                     "_id = ?",
                     new String[]{Integer.toString(drinkNo)},
-                    null,null,null);
+                    null, null, null);
 
             //Move to first record
-            if (cursor.moveToFirst()){
+            if (cursor.moveToFirst()) {
 
                 //get details of the drink
                 String nameText = cursor.getString(0);
                 String descText = cursor.getString(1);
                 int photoId = cursor.getInt(2);
-                boolean isFavorite = (cursor.getInt(3) ==1);
+                boolean isFavorite = (cursor.getInt(3) == 1);
 
-                TextView name =(TextView)findViewById(R.id.name);
+                TextView name = (TextView) findViewById(R.id.name);
                 name.setText(nameText);
 
-                TextView desc =(TextView)findViewById(R.id.description);
+                TextView desc = (TextView) findViewById(R.id.description);
                 desc.setText(descText);
 
-                ImageView photo =(ImageView)findViewById(R.id.photo);
+                ImageView photo = (ImageView) findViewById(R.id.photo);
                 photo.setImageResource(photoId);
                 photo.setContentDescription(nameText);
 
-                CheckBox favorite = (CheckBox)findViewById(R.id.favorite);
+                CheckBox favorite = (CheckBox) findViewById(R.id.favorite);
                 favorite.setChecked(isFavorite);
             }
             cursor.close();
             db.close();
 
-        } catch (SQLiteException e){
-            Toast toast = Toast.makeText(this,"Database unavailable",Toast.LENGTH_SHORT);
+        } catch (SQLiteException e) {
+            Toast toast = Toast.makeText(this, "Database unavailable", Toast.LENGTH_SHORT);
             toast.show();
         }
 
     }
 
     //Update the database
-    public void onFavoriteClicked(View view){
-        int drinkNo =(Integer)getIntent().getExtras().get("drinkNo");
+    public void onFavoriteClicked(View view) {
+        int drinkNo = (Integer) getIntent().getExtras().get("drinkNo");
+        new UpdateDrinkTask().execute(drinkNo);
 
         /*CheckBox favroite = (CheckBox)findViewById(R.id.favorite);
         ContentValues drinkValues = new ContentValues();
@@ -106,33 +107,34 @@ public class DrinkActivity extends Activity {
     }
 
     //Inner class to update
-    private class UpdateDrinkTask extends AsyncTask<Integer,Void,Boolean>{
+    private class UpdateDrinkTask extends AsyncTask<Integer, Void, Boolean> {
         ContentValues drinkValues;
-        protected void onPreExecute(){
-            CheckBox favroite = (CheckBox)findViewById(R.id.favorite);
+
+        protected void onPreExecute() {
+            CheckBox favroite = (CheckBox) findViewById(R.id.favorite);
             drinkValues = new ContentValues();
-            drinkValues.put("FAVORITE",favroite.isChecked());
+            drinkValues.put("FAVORITE", favroite.isChecked());
         }
 
-        protected Boolean doInBackground(Integer... drinks){
+        protected Boolean doInBackground(Integer... drinks) {
             int drinkNo = drinks[0];
-            SQLiteOpenHelper starbuzzDatabaseHelper =new StarbuzzDatabaseHelper(DrinkActivity.this);
+            SQLiteOpenHelper starbuzzDatabaseHelper = new StarbuzzDatabaseHelper(DrinkActivity.this);
             try {
-                SQLiteDatabase db =starbuzzDatabaseHelper.getWritableDatabase();
-                db.update("DRINK",drinkValues,"_id = ?",new String[]{Integer.toString(drinkNo)});
+                SQLiteDatabase db = starbuzzDatabaseHelper.getWritableDatabase();
+                db.update("DRINK", drinkValues, "_id = ?", new String[]{Integer.toString(drinkNo)});
                 db.close();
                 return true;
-            }catch (SQLiteException e){
+            } catch (SQLiteException e) {
                 return false;
             }
         }
 
-        protected void onPostExecute(Boolean success){
-            if(success){
-                Toast toast = Toast.makeText(DrinkActivity.this,"Database changed",Toast.LENGTH_SHORT);
+        protected void onPostExecute(Boolean success) {
+            if (success) {
+                Toast toast = Toast.makeText(DrinkActivity.this, "Database changed", Toast.LENGTH_SHORT);
                 toast.show();
-            }else if (!success){
-                Toast toast = Toast.makeText(DrinkActivity.this,"Database unavailable ",Toast.LENGTH_SHORT);
+            } else if (!success) {
+                Toast toast = Toast.makeText(DrinkActivity.this, "Database unavailable ", Toast.LENGTH_SHORT);
                 toast.show();
             }
         }
