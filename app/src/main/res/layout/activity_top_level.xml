@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.abdo_mashael.starbuzz.TopLevelActivity">
+-->
+
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="com.abdo_mashael.starbuzz.TopLevelActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/starbuzz"
+        android:contentDescription="@string/starbuzz_logo"
+        android:scaleType="fitXY"
+        android:paddingBottom="20dp"
+        />
+
+    <ListView
+        android:id="@+id/list_options"
+        android:layout_width="match_parent"
+        android:layout_height="182dp"
+        android:entries="@array/options"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/favorites"
+        />
+
+    <ListView
+        android:id="@+id/list_favorites"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:background="@color/colorFavList"
+
+        />
+
+    </LinearLayout>
+
+<!--
+</ScrollView>-->
