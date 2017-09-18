@@ -1,5 +1,6 @@
 package com.abdo_mashael.starbuzz;
 
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -22,6 +23,10 @@ public class DrinkCategoryAcrivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
 
         ListView listDrinks=getListView();
 

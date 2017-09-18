@@ -1,5 +1,6 @@
 package com.abdo_mashael.starbuzz;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -23,6 +24,9 @@ public class DrinkActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drink);
+
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
         //Get the drink from the intent
         int drinkNo = (Integer) getIntent().getExtras().get(EXTRA_DRINKNO);
