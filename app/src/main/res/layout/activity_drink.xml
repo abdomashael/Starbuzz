@@ -21,6 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textStyle="bold"
+        android:textSize="30sp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         />
 
@@ -28,7 +29,11 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:layout_gravity="center_horizontal"
+        android:textSize="25sp"
+        android:textStyle="italic"
         />
 
     <CheckBox
@@ -36,5 +41,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/favorite"
+        android:textStyle="bold"
         android:onClick="onFavoriteClicked"/>
 </LinearLayout>

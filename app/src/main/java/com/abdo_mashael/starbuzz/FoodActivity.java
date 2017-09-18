@@ -75,8 +75,15 @@ public class FoodActivity extends Activity {
 
     //Update the database
     public void onFavoriteClicked(View view) {
-        int foodNo = (Integer) getIntent().getExtras().get("foodNo");
-        new FoodActivity.UpdateFoodTask().execute(foodNo);
+        try {
+            int foodNo = (Integer) getIntent().getExtras().get(EXTRA_FOODNO);
+            new FoodActivity.UpdateFoodTask().execute(foodNo);
+
+        }catch (NullPointerException e){
+            Toast toast = Toast.makeText(FoodActivity.this, "Database unavailable ", Toast.LENGTH_SHORT);
+            toast.show();
+
+        }
 
     }
 

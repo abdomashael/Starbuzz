@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="colorFavList">#B7B7B7</color>
+    <color name="colorFavListTop">#9B9999</color>
 </resources>

@@ -6,8 +6,11 @@
         <item>Drinks</item>
         <item>Food</item>
         <item>Stores</item>
+        <item>Favorites</item>
     </array>
 
-    <string name="favorite">Favorite</string>
-    <string name="favorites">Your favorite drinks:</string>
+    <string name="favorite">Favorites</string>
+    <string name="favorites">Your Favorite :</string>
+    <string name="drinks">Drinks</string>
+    <string name="food">Food</string>
 </resources>

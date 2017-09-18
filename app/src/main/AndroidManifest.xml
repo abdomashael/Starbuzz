@@ -24,17 +24,21 @@
         <activity
             android:name=".DrinkCategoryAcrivity"
             android:label="@string/title_activity_drink_category"
-            android:parentActivityName=".TopLevelActivity"/>
+            android:parentActivityName=".TopLevelActivity" />
         <activity
             android:name=".DrinkActivity"
-            android:parentActivityName=".DrinkCategoryAcrivity"/>
+            android:parentActivityName=".DrinkCategoryAcrivity" />
         <activity
             android:name=".FoodCategoryAcrivity"
             android:label="Foods"
-            android:parentActivityName=".TopLevelActivity"/>
+            android:parentActivityName=".TopLevelActivity" />
         <activity
             android:name=".FoodActivity"
-            android:parentActivityName=".FoodCategoryAcrivity"/>
+            android:parentActivityName=".FoodCategoryAcrivity" />
+        <activity
+            android:name=".Favorites"
+            android:label="@string/favorite"
+            ></activity>
     </application>
 
 </manifest>
